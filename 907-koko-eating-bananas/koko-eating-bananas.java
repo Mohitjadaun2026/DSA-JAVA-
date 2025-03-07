@@ -1,23 +1,23 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
-        int minspeed = 1;
-        int maxspeed = 0;
+        int low = 1;
+        int high = 0;
 
         for (int pile : piles) {
-            maxspeed = Math.max(maxspeed, pile);
+            high = Math.max(high, pile);
         }
 
-        while (minspeed < maxspeed) {
-            int mid = minspeed + (maxspeed - minspeed) / 2;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
 
             if (canEat(piles, h, mid)) {
-                maxspeed = mid;
+                high = mid;
             } else {
-                minspeed = mid + 1;
+                low = mid + 1;
             }
         }
 
-        return minspeed;
+        return low;
     }
 
     private boolean canEat(int[] piles, int h, int speed) {
