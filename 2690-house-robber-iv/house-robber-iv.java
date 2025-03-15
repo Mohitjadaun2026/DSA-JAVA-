@@ -1,10 +1,7 @@
 class Solution {
     public int minCapability(int[] nums, int k) {
-        int low = Integer.MAX_VALUE, high = 0;
-        for (int num : nums) {
-            low = Math.min(low, num);
-            high = Math.max(high, num);
-        }
+        int low = 0, high = 0;
+        for (int num : nums) high = Math.max(high, num);
         
         while (low < high) {
             int mid = (low + high) / 2, count = 0, prev = -2;
